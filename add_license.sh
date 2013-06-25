@@ -69,7 +69,10 @@ EOF
 
 get_file_type () {
 	desc=`file $1`
-	if [[ "$desc" =~ "python" ]];
+	if x=$1 && [[ "{${x##*.}" = "go" ]];
+    then
+        echo go
+	elif [[ "$desc" =~ "python" ]];
 	then
 		echo python
 	elif [[ "$desc" =~ "shell script" ]];
