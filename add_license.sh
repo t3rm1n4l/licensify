@@ -18,8 +18,8 @@ then
     excludes=/tmp/excludes
 fi
 
-echo ".git" >> $excludes
-echo ".svn" >> $excludes
+echo "\.git" >> $excludes
+echo "\.svn" >> $excludes
 
 if [ -z "$AUTHOR" ];
 then
