@@ -23,7 +23,7 @@ echo "\.svn" >> $excludes
 
 if [ -z "$AUTHOR" ];
 then
-    AUTHOR="Sarath Lakshman"
+    AUTHOR="Sriharsha Krishnamurthy, Pritish Pratap, Aniraj Kesavan for Zynga Inc"
 fi
 
 YEAR="$(date +%Y)"
@@ -47,7 +47,7 @@ read -d '' license1 <<EOF
 
 EOF
 
-# C,C++, Go style
+# C,C++, Go, php style
 read -d '' license2 <<EOF
 /*
  *	 Copyright $YEAR $AUTHOR
@@ -84,6 +84,9 @@ get_file_type () {
 	elif [[ "$desc" =~ "c program" ]];
 	then
 		echo c
+    elif [[ "$desc" =~ "PHP script" || "$desc"=~"php script" ]];
+    then
+       echo php
 	else
 		echo unknown
 	fi
@@ -145,6 +148,7 @@ grep -v -f $excludes /tmp/tmp.$$.files.1 > /tmp/tmp.$$.files
 for f in `cat /tmp/tmp.$$.files`;
 do
     echo "Processing $f"
+    dos2unix $f 2 > /tmp/dos2unix_errors.log
     hl=$(has_license $f)
 	if [[ "$hl" = "yes" ]];
 	then
