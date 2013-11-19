@@ -23,7 +23,7 @@ echo "\.svn" >> $excludes
 
 if [ -z "$AUTHOR" ];
 then
-    AUTHOR="Sriharsha Krishnamurthy, Pritish Pratap, Aniraj Kesavan for Zynga Inc"
+    AUTHOR="Sarath Lakshman"
 fi
 
 YEAR="$(date +%Y)"
